@@ -1,9 +1,26 @@
+//collect the userName, password the user entered
 function collectData() {
     const userName = document.getElementById('userName').value
     const password = document.getElementById('password').value
+    const description = ``
+    const url = ``
+
+
+    const currentLogInInfoInStorage = JSON.parse(localStorage.getItem('logInInfo'))
+    if (currentLogInInfoInStorage) {
+        const index = (currentLogInInfoInStorage.findIndex(info => info.userName === `${userName}`))
+        if (index !== -1) {
+            console.log(`repeated user name`);
+            return ``
+            //it letting it to be saved yet
+        }
+    }
+
     return {
         userName,
-        password
+        password,
+        description,
+        url
     }
 }
 
@@ -34,8 +51,6 @@ form.addEventListener('submit', event => {
     clearForm();
 })
 
-let userNameLoggedIn = [];
-
 const form2 = document.getElementById('signInForm')
 form2.addEventListener('submit', event => {
     event.preventDefault();
@@ -49,8 +64,7 @@ form2.addEventListener('submit', event => {
     }
     else if (currentLogInInfoInStorage[index].password === `${passwordEnterd}`) {
         console.log(`success`);
-        userNameLoggedIn.push(currentLogInInfoInStorage[index]);
-        localStorage.setItem(`user`, JSON.stringify(userNameLoggedIn));
+        localStorage.setItem(`user`, JSON.stringify(currentLogInInfoInStorage[index]));
         clearForm();
 
         window.location.href = 'info.html';

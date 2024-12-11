@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script defer src="/assets/js/appInfo.js"></script>
 </head>
+
 <body>
     <h1>Validation worked</h1>
     <h4 id="h4"></h4>
+
     <div>write a short description about your bar:</div>
     <textarea id="shortDescription" placeholder="short description about your bar"></textarea>
     <button id="saveDescription">save</button>
+    <br><br>
+
+    <h4>bar picture</h4>
+    <input id="barPicture" /> <br><br>
+    <button id="savePicture">save URL</button>
+    <div id="picture"></div>
+
+    <!-- the rating of the bar -->
+    <div id="rating"></div> <br><br>
+
+    <select id="selectBar"></select>
 </body>
+
 </html>
