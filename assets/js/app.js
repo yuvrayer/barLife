@@ -2,8 +2,8 @@
 function collectData() {
     const userName = document.getElementById('userName').value
     const password = document.getElementById('password').value
-    const description = ``
-    const url = ``
+    const description = ""
+    const url = ""
 
 
     const currentLogInInfoInStorage = JSON.parse(localStorage.getItem('logInInfo'))

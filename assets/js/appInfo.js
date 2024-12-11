@@ -1,5 +1,5 @@
 const userNameLoggedIn = JSON.parse(localStorage.getItem(`user`));
-// document.getElementById(`h4`).innerHTML = `welcome to the app, user: ${userNameLoggedIn[0].userName}`;
+document.getElementById(`h4`).innerHTML = `welcome to the app, user: ${userNameLoggedIn.userName}`;
 
 
 //saving description
@@ -26,13 +26,13 @@ savePicture.addEventListener(`click`, event => {
 //load the DOM from the storage
 const loadStorage = () => {
 
-    document.getElementById(`shortDescription`).innerHTML = JSON.parse(localStorage.getItem(`user`))[0].description //description
-    const pictureUrl = JSON.parse(localStorage.getItem(`user`))[0].url //url
+    document.getElementById(`shortDescription`).innerHTML = JSON.parse(localStorage.getItem(`user`)).description //description
+    const pictureUrl = JSON.parse(localStorage.getItem(`user`)).url //url
     document.getElementById(`picture`).innerHTML = `<img src="${pictureUrl}"></img>` //image
 
 
     //number of stars (out of 5 stars)
-    // const numberOfStars = +localStorage.getItem(`user`)[0].rating
+    // const numberOfStars = +localStorage.getItem(`user`).rating
     const numberOfStars = +prompt(`number of stars`)
     const starToGlass = color => `<div class="glyphicon glyphicon-glass" style="color: ${color}"> </div>`
     document.getElementById(`rating`).innerHTML = starToGlass("yellow").repeat(numberOfStars) + starToGlass("black").repeat(5 - numberOfStars)
@@ -44,12 +44,12 @@ loadStorage();
 //save the new data to the user, log in info
 const saveToLogInInfo = (property, propertyLocation) => {
     let data = JSON.parse(localStorage.getItem(`user`));
-    data[0][property] = document.getElementById(propertyLocation).value
+    data[property] = document.getElementById(propertyLocation).value
     localStorage.setItem(`user`, JSON.stringify(data))
 
     const currentLogInInfoInStorage = JSON.parse(localStorage.getItem('logInInfo'))
-    const index = (currentLogInInfoInStorage.findIndex(info => info.userName === `${data[0].userName}`));
-    currentLogInInfoInStorage[index] = data[0];
+    const index = (currentLogInInfoInStorage.findIndex(info => info.userName === `${data.userName}`));
+    currentLogInInfoInStorage[index] = data;
     localStorage.setItem(`logInInfo`, JSON.stringify(currentLogInInfoInStorage))
 }
 
