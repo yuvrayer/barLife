@@ -54,15 +54,15 @@ form.addEventListener('submit', event => {
 const form2 = document.getElementById('signInForm')
 form2.addEventListener('submit', event => {
     event.preventDefault();
-    const userNameEnterd = document.getElementById(`userNameEnterd`).value
-    const passwordEnterd = document.getElementById(`passwordEnterd`).value
+    const userNameEntered = document.getElementById(`userNameEntered`).value
+    const passwordEntered = document.getElementById(`passwordEntered`).value
     const currentLogInInfoInStorage = JSON.parse(localStorage.getItem('logInInfo'))
 
-    const index = (currentLogInInfoInStorage.findIndex(info => info.userName === `${userNameEnterd}`))
+    const index = (currentLogInInfoInStorage.findIndex(info => info.userName === `${userNameEntered}`))
     if (index < 0) {
         console.log(`false userName`)
     }
-    else if (currentLogInInfoInStorage[index].password === `${passwordEnterd}`) {
+    else if (currentLogInInfoInStorage[index].password === `${passwordEntered}`) {
         console.log(`success`);
         localStorage.setItem(`user`, JSON.stringify(currentLogInInfoInStorage[index]));
         clearForm();
